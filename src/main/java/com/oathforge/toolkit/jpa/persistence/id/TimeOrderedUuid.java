@@ -1,4 +1,4 @@
-package com.backendtoolkit.common.persistence.id;
+package com.oathforge.toolkit.jpa.persistence.id;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

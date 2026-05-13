@@ -1,11 +1,12 @@
-package com.backendtoolkit.common.util;
+package com.oathforge.toolkit.jpa.util;
 
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Component;
 
-import com.backendtoolkit.common.enums.ExceptionEnum;
-import com.backendtoolkit.common.exception.InternalServerErrorException;
-import com.backendtoolkit.common.security.encryption.EncryptionProperties;
+import com.oathforge.toolkit.enums.ExceptionEnum;
+import com.oathforge.toolkit.exception.InternalServerErrorException;
+import com.oathforge.toolkit.security.encryption.EncryptionProperties;
+import com.oathforge.toolkit.util.EncryptionUtil;
 
 import jakarta.persistence.AttributeConverter;
 import jakarta.persistence.Converter;
