@@ -1,4 +1,4 @@
-package com.oathforge.toolkit.jpa.persistence.model;
+package org.oathforge.toolkit.jpa.persistence.model;
 
 import java.time.LocalDateTime;
 
