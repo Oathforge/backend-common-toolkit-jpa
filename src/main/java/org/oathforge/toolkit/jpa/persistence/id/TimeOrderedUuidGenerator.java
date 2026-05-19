@@ -1,4 +1,4 @@
-package com.backendtoolkit.common.persistence.id;
+package org.oathforge.toolkit.jpa.persistence.id;
 
 import java.util.EnumSet;
 

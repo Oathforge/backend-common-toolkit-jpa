@@ -17,7 +17,7 @@ Use this module only if your service needs JPA persistence. If your project uses
 
 ```xml
 <dependency>
-  <groupId>io.backendtoolkit</groupId>
+  <groupId>org.oathforge</groupId>
   <artifactId>backend-common-toolkit-jpa</artifactId>
   <version>1.0.0-SNAPSHOT</version>
 </dependency>
