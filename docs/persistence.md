@@ -21,6 +21,8 @@ This module provides a shared JPA foundation for auditing and identifier generat
 
 ## Audited entity example
 
+`@Id` is still required. `@TimeOrderedUuid` only provides the ID generation strategy.
+
 ```java
 @Entity
 @Table(name = "app_user")
