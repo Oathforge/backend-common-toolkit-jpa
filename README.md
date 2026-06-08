@@ -54,6 +54,49 @@ public class User extends BaseModelAudit {
 }
 ```
 
+## Auditing activation
+
+`BaseModelAudit` defines the audit fields and Spring Data annotations, but each JPA service must still enable Spring Data JPA auditing in its own application context.
+
+At minimum, the service must declare `@EnableJpaAuditing`.
+
+If the service wants Spring to populate `createdBy` and `modifiedBy`, it must also provide an `AuditorAware<?>` bean that resolves the current user from the authentication mechanism used by that service.
+
+Typical approach:
+
+- read the current user from the Spring Security context, or replace that part with the service's own user-resolution mechanism
+- if the operation can run without an authenticated user, optionally return a default value such as `"system"`
+
+The bean name is not fixed. It only has to match the value used in `auditorAwareRef`.
+
+The example below uses `SecurityContextHolder` because it is the most common Spring setup, but that part can be replaced with any project-specific way of obtaining the current user.
+
+Example:
+
+```java
+@Configuration
+@EnableJpaAuditing(auditorAwareRef = "auditorProvider")
+public class JpaAuditingConfiguration {
+
+  @Bean
+  AuditorAware<String> auditorProvider() {
+    return () -> {
+      try {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication == null) {
+          return Optional.of("system");
+        }
+        return Optional.ofNullable(authentication.getName()).or(() -> Optional.of("system"));
+      } catch (Exception e) {
+        return Optional.of("system");
+      }
+    };
+  }
+}
+```
+
+Without this configuration, extending `BaseModelAudit` is not enough to make JPA auditing run.
+
 ## Detailed documentation
 
 - [Base persistence](docs/persistence.md)
