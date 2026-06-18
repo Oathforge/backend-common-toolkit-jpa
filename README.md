@@ -25,7 +25,7 @@ Use this module only if your service needs JPA persistence. If your project uses
 <dependency>
   <groupId>io.github.oathforge</groupId>
   <artifactId>backend-common-toolkit-jpa</artifactId>
-  <version>1.1.0</version>
+  <version>1.0.1-SNAPSHOT</version>
 </dependency>
 ```
 
